@@ -1,19 +1,18 @@
 ---
 layout: cv
-title: Wode "Nimo" Ni
+title: 周家炜
 email: 
-    url: mailto:woden@cs.cmu.edu
-    text: woden@cs.cmu.edu
-homepage:
-  url: http://cs.cmu.edu/~woden
-  text: cs.cmu.edu/~woden
+    url: zpolyval@gmail.com
+    text: zpolyval@gmail.com
+phone: 13****
 ---
 
-# Wode **Ni**
+# 周家炜
 
 <!--
 include contact information from the front matter
 Supported arguments:
+
     - homepage: url, text
     - phone
     - email
@@ -21,91 +20,58 @@ Supported arguments:
 
 {% include cv-contact.html %}
 
-## Education
+## 教育经历
 
-### **Carnegie Mellon University** `2018.9 -`
+### **华中科技大学** `2015.9 - 2018.7 `
 
-```
-Pittsburgh, PA
-```
+- 机械电子工程
 
-- Ph.D. in Software Engineering
-- Co-advised by [Ken Koedinger](http://pact.cs.cmu.edu/koedinger.html) and [Josh Sunshine](http://www.cs.cmu.edu/~jssunshi/)
+### **吉林大学** `2011.9 - 2015.7`
 
-### **Columbia University** `2016.9 - 2018.5`
+- 汽车运用工程
 
-```
-New York, NY
-```
+## 工作经历
 
-- B.S. in Computer Science, _Magna Cum Laude_
-- Vision, Graphics track
+### **xx技术有限公司** `2017.5 - 2017.8`
 
-### **Dickinson College** `2013.9 - 2016.5`
+负责小型化利旧专项中部分服务的内存瘦身工作。
 
-```
-Carlisle, PA
-```
+XX服务内存优化的**目标**是在更大管理规模场景下，该服务内存占用能够满足基线要求。
 
-- B.S. in Computer Science, _Summa Cum Laude_
-- Computer Science Departmental Honors
+首先是对**内存进行监控**，通过JVisualVM观察内存的变化趋势，发现内存在进程刚启动一段时间会持续增长，存在一个峰值内存，后来逐渐趋于小波动范围平稳。我们需要确保其峰值内存满足要求。
 
-## Publications
+对**内存占用的预测**，由于当时还没有更大管理规模环境，需要先进行预测。结合业务代码和内存占用对象的分析，我们知道了峰值内存和常驻内存的差值可以代表其管理规模，因此通过倍数的关系可以预测更大管理规模的内存峰值。
 
-### [**Substance and Style: domain-specific languages for mathematical diagrams**](https://2017.splashcon.org/event/dsldi-2017-substance-and-style-domain-specific-languages-for-mathematical-diagrams)
+对**内存占用的解剖**，通过内存分析工具MAT来进行详细的内存分析
 
-**Wode Ni\***, Katherine Ye\*, Joshua Sunshine, Jonathan Aldrich, and Keenan Crane.<br> _Domain-Specific Language Design and Implementation (DSLDI 2017), co-located with SPLASH._ <br>
-[[PDF](assets/dsldi.pdf)]
-[[slides](assets/dsldi-presentation.pdf)]
-[[www](http://penrose.ink)]
-[[repo](https://github.com/penrose/penrose)]
+### **存量服务维护** `2017.1 - 2017.5`
 
-### [**Whiteboard Scanning Using Super-Resolution**](http://scholar.dickinson.edu/student_honors/221/)
+负责存量服务的开发与维护，优化存量数据采集效率百倍。
 
-**Wode Ni**.<br> _Dickinson College Honors Theses. Paper 221._<br>
-[[PDF](assets/superres.pdf)]
+1. 使用阿里开源工具arthas，快速定位出问题点，发现一个比较耗时的方法是被循环调用，而该方法支持批量调。
+2. 采集是通过配置文件去数据库中运行sql命令来执行，发现可以一条sql查出来的东西，却用了好几步，后面几步用前面第一条sql查出来的东西来拼接sql反复查。
+3. 对sql进行优化，发现了一些稀奇古怪的sql。将or换成union all，使其都能走索引。谓词条件下推，尽量提前过滤掉数据，使用更少数据的作为驱动表。
+4. 发现有一个任务，其中三个获取数据的过程可以分成三个步骤并行去执行，于是三个任务各起一个线程，利用CountDownLatch，三个任务运行完后，再在主线程进行数据合并处理过程。
 
-## Experience
+## 技能
 
-### **Carnegie Mellon University, Research Experiences for Undergraduate** `2017.5 - 2017.8`
+熟悉Java常见问题定位(cpu高、内存优化、句柄过高、虚拟机coredump)、Java并发。Python
 
-_Research Assistant_<br>
-**Penrose** is a system that automatically visualizes mathematics using two domain-specific languages: **Substance** and **Style**. Co-advised by [Jonathan Aldrich](https://www.cs.cmu.edu/~./aldrich/), [Keenan Crane](https://www.cs.cmu.edu/~kmcrane/), [Joshua Sunshine](http://www.cs.cmu.edu/~jssunshi/), and [Katherine Ye](https://www.cs.cmu.edu/~kqy/), I designed and implemented the Style language, and extended the Substance language to support functions and logically quantified statements.
+熟悉Git、Linux常用命令
 
-### **Columbia University, Computer Graphics and User Interfaces Lab** `2017.1 - 2017.5`
+了解Spring Cloud、微服务、分布式
 
-_Research Assistant_<br>
-Worked with prof. Steven Feiner, on **Cyber Affordance Visualization in Augumented Reality** project. Developed a Microsoft Hololens application that visualizes the Columbia campus in AR environment.
+C++进程启动异常问题定位、core dump定位。
 
-### **AsiaInfo** `2015.6 - 2015.8`
+拥有复杂大规模系统软件调测能力
 
-_Software Engineering Intern_<br>
-Worked on server-side web applications and server deployment tools.
+## 获奖情况
 
-## Advising
-
-Max Krieger (CMU, independent research & [REUSE](https://www.cmu.edu/scs/isr/reuse/)) `CMU, 2018 - Now` <br>
-Courtney Miller (New College of Florida, [REUSE](https://www.cmu.edu/scs/isr/reuse/)) `CMU, 2019` <br>
-Anael Kuperwajs Cohen (Macalester College, [REUSE](https://www.cmu.edu/scs/isr/reuse/)) `CMU, 2019` <br>
-
-## Teaching
-
-Teaching Assistant, **Programming Languages and Translators (COMS 4115)** `Columbia, 2017 - 2018` <br>
-Teaching Assistant, **Introduction to Java II (COMP 132)** `Dickinson, 2016` <br>
-Peer Tutor, **Data Structures and Problem Solving (COMP 232)** `Dickinson, 2016` <br>
-Computer Lab Consultant `Dickinson, 2014 - 2016` <br>
-
-## Honors & Awards
-
-Phi Beta Kappa `Dickinson, 2018` <br>
-Excellence in Computer Science Award `Columbia, 2018` <br>
-Tau Beta Pi, Engineering Honor Society `Columbia, 2017` <br>
-Computer Science Departmental Honors `Dickinson, 2016` <br>
-Pi Mu Epsilon, Mathematics Honor Society `Dickinson, 2016` <br>
-Upsilon Pi Epsilon, Computer Science Honor Society `Dickinson, 2016` <br>
-Alpha Lambda Delta, First year Honor Society `Dickinson, 2013`<br>
-John Montgomery Scholarship `Dickinson, 2013` <br>
-Travel Award for [SPLASH'18](https://2018.splashcon.org/track/splash-2018-PLMW?track=SPLASH%20PLMW)
+- 2013 年校三等奖学金、院优秀学生荣誉称号 
+- 2014 年校二等奖学金、院优秀学生荣誉称号 
+- 2016 年光华奖学金、一等学业奖学金 
+- 2016 年社会活动积极分子荣誉称号 
+- 2017 年华为软件精英挑战赛二等奖(初赛第 3，复赛第 8) 
 
 ## Service
 
